@@ -1,46 +1,29 @@
 <template>
-  <section class="home-about">
-    <div class="section__title"></div>
-    <!-- ここから追加 -->
+  <section>
     <v-container>
-      <v-row class="home-about__contents">
-        <v-col md="5" class="home-about__contents-img">
-          <img src="../assets/about.jpg" class="img-fluid" />
-        </v-col>
-        <v-col md="5" class="home-about__contents-text">
-          <div class="contents_text">
-            <p>絶対にエンジニアになります</p>
-            <p>横手焼きそばで有名</p>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-          </div>
+      <v-row justify="center" aligin-content="center">
+        <v-col>
+          <h1 class="pagetitle disply-3 font-weight-bold">About me</h1>
+          <v-cord>
+            <v-card-actions>
+              <v-avatar size="230">
+                <v-img :src="image_src" />
+              </v-avatar>
+            </v-card-actions>
+          </v-cord>
         </v-col>
       </v-row>
     </v-container>
-    <!-- ここまで追加 -->
   </section>
 </template>
 <script>
 export default {
   data() {
     return {
-      texts: [{}],
+      image_src: require("../assets/about.jpg"),
     };
   },
 };
 </script>
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap");
-.img-fluid {
-  width: auto;
-  height: 500px;
-}
-.contents_text {
-  width: 100%;
-  font-family: "Noto Sans JP", sans-serif;
-}
+<style  lang="scss" scoped>
 </style>

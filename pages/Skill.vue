@@ -1,146 +1,87 @@
 <template>
-    <v-container
-        py-6
-        px-5>
-        <v-row
-            justify="center"
-            align-content="center">
-            <v-col
-    cols="12"
-    xs="7"
-    sm="10"
-    md="10"
-    lg="10"
-    offset-xl="1">
-    <h1 class="pagetitle display-3 font-weight-bold mt-8 mb-8">
-        Skills
-    </h1>
-</v-col>
-
-<v-col
-    xs="12"
-    sm="6"
-    md="3"
-    lg="3"
-    v-for="skill in skills"
-    :key="skill.title">
-    <template>
-        <v-hover>
-            <v-card
-                slot-scope="{ hover }"
-                class="text-xs-center ma-4"
-                :class="`elevation-${hover ? 12 : 4}`"
-                color="teal darken-2">
-                <v-card-title>
-                    <div class="mx-auto">
-                        <v-progress-circular
-                            :value="skill.value"
-                            :color="skill.color"
-                            :rotate="-90"
-                            width="15"
-                            size="100">
-                            {{ skill.value }}
-                        </v-progress-circular>
-                    </div>
-                </v-card-title>
-
-                <v-card-actions>
-                    <v-layout justify-space-around>
-                        <div class="headline">
-                            <v-tooltip bottom>
-                                <template v-slot:activator="{ on }">
-                                    <span
-                                        :color="skill.color"
-                                        :class="`${skill.color}--text`"
-                                        class="subtitle-1"
-                                        v-on="on">
-                                        <v-icon size="18">
-                                            {{ skill.icon }}
-                                        </v-icon>
-                                        {{ skill.title }}
-                                    </span>
-                                </template>
-                                <span>{{ skill.duration }}</span>
-                            </v-tooltip>
-                        </div>
-                    </v-layout>
-                </v-card-actions>
-            </v-card>
-        </v-hover>
-    </template>
-</v-col>
-        </v-row>
-
-        <div class="text-center pb-6 px-5">
-            <v-btn
-                x-large
-                color="grey darken-3"
-                rounded
-                to="/"
-                class="mx-4 my-2">
-                <v-icon class="mr-2">
-                    home
-                </v-icon> back home
-            </v-btn>
-        </div>
-    </v-container>
+  <div>
+    <h1 class="main_title">Skills</h1>
+    <v-card v-for="skill in skills" :key="skill.title">
+      <v-container my-15>
+        <v-icon size="40">{{ skill.icon }}</v-icon>
+        {{ skill.title }}
+        <v-progress-linear
+          :color="skill.color"
+          :value="skill.value"
+          height="25"
+        >
+          <strong>{{ skill.value }}%</strong>
+        </v-progress-linear>
+        <br />
+      </v-container>
+    </v-card>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      interval: {},
       skills: [
         {
-          title: "HTML & CSS",
-          value: 0,
-          absoluteValue: 80,
-          color: "white",
+          title: "HTML&CSS",
           icon: "mdi-language-html5",
-          show: false,
-          duration: "5 years",
+          value: 0,
+          absoluteValue: 60,
+          color: "green",
         },
-       // 略
         {
           title: "JavaScript",
-          value: 0,
-          absoluteValue: 100,
-          color: "white",
           icon: "mdi-language-javascript",
-          show: false,
-          duration: "25 years / very good",
+          value: 0,
+          absoluteValue: 60,
+          color: "blue",
         },
         {
-          title: "Vue.js",
-          value: 0,
-          absoluteValue: 100,
-          color: "white",
+          title: "Vue.js&Nuxt.js",
           icon: "mdi-vuejs",
-          show: false,
-          duration: "25 years / very good",
+          value: 0,
+          absoluteValue: 70,
+          color: "red",
+        },
+        {
+          title: "Firebase",
+          icon: "mdi-firebase",
+          value: 0,
+          absoluteValue: 70,
+          color: "#FFB74D",
         },
       ],
-      interval: {},
-      expand: false,
-    }
+    };
   },
   beforeDestroy() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   },
   mounted() {
-    let timesRun = 0;
+    let timesRun = 0; //0回からスタートして
     this.interval = setInterval(() => {
       if (timesRun === 10) {
+        //10回処理を繰り返したら終わり
         clearInterval(this.interval);
         return;
       }
-      timesRun += 1;
+      timesRun += 1; //〜回ずつ+され、10になったら終わり
       this.skills.forEach((skill) => {
+        //配列名.forEach   要素の値
         if (skill.absoluteValue !== skill.value) {
-          skill.value += 10
+          skill.value += 10; //10％ずつ上がっていく
         }
       });
-    }, 300)
-  }
+    }, 300); //0.3秒経過する毎に処理を繰り返す
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.main_title {
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
+</style>

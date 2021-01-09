@@ -1,22 +1,18 @@
 <template>
-<v-app>
+  <v-app>
     <Header />
     <v-content>
       <v-container>
-      <Nuxt/>
+        <Nuxt />
       </v-container>
     </v-content>
     <Footer />
-</v-app>
+  </v-app>
 </template>
  
 <script>
-
-export default {
-
-}
+export default {};
 </script>
  
 <style>
-
 </style>

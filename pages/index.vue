@@ -34,13 +34,9 @@ export default {
   background-position: center center;
   width: 100%;
   height: 90vh;
-  h1 {
-    background-color: red;
-    font-family: "Noto Sans JP", sans-serif;
-  }
-}
 
-.display-3 {
-  font-family: "Noto Sans JP", sans-serif;
+  .display-3 {
+    font-weight: bold;
+  }
 }
 </style>
