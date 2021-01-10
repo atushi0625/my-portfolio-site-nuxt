@@ -38,16 +38,8 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/style-resources','nuxt-webfontloader'  
+  modules: ['@nuxtjs/style-resources' , 'bootstrap-vue/nuxt', 
 ],
-webfontloader: {
-  google: {
-    families: ['Sawarabi+Gothic',
-    'Playfair+Display:wght@700',
-    'Noto+Sans+JP:wght@900'
-  ], 
-  }
-},
 
 
 
@@ -56,9 +48,19 @@ webfontloader: {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      accent: true,
-      dark: {
+      dark: true,
+      themes: {
         dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        },
+        // lightテーマ色
+        light:{
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
