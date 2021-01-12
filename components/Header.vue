@@ -28,7 +28,7 @@
             <v-list-item-avatar size="130">
               <v-img :src="image_src" />
             </v-list-item-avatar>
-            <v-list-item-title class="font-weight-black"
+            <v-list-item-title class="font-weight-black display-1"
               >Atushi Sato</v-list-item-title
             >
           </v-list-item-content>
@@ -39,13 +39,16 @@
         <v-list dense>
           <v-list-item v-for="item in items" :key="item.title" :to="item.link">
             <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon class="py-3 my-7 font-weight-black display-1">{{
+                item.icon
+              }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
-              <v-list-item-title class="font-weight-black">{{
-                item.title
-              }}</v-list-item-title>
+              <v-list-item-title
+                class="py-3 my-5 font-weight-black display-1"
+                >{{ item.title }}</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -64,7 +67,7 @@ export default {
         { title: "HOME", icon: "mdi-home", link: "Home" },
         { title: "ABOUT", icon: "mdi-account-edit", link: "About" },
         { title: "SKILL", icon: "mdi-grease-pencil", link: "Skill" },
-        { title: "WORKS", icon: "", link: "Works" },
+        { title: "WORKS", icon: "mdi-camera-burst", link: "Works" },
       ],
     };
   },

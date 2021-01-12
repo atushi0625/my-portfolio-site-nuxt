@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       show: true,
-      message: "私の人生の集大成をエンジニアに注ぎます",
+      message: "私の人生の集大成をエンジニアに注ぎます！！",
     };
   },
 };
@@ -46,6 +46,10 @@ export default {
   background-position: center center;
   width: 100%;
   height: 90vh;
+
+  // h1 {
+
+  // }
 }
 
 .fade-enter,
