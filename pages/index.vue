@@ -1,13 +1,11 @@
 <template>
   <main class="main_page">
-    <transition name="fade">
-      <h1
-        class="pt-3 font-weight-bold red--text display-2 font-italic"
-        @load="show = !show"
-      >
-        {{ message }}
-      </h1>
-    </transition>
+    <h1 class="pt-3 font-weight-bold red--text display-2 font-italic">
+      {{ message }}
+      <span class="back_text animate__animated animate__bounce">{{
+        message
+      }}</span>
+    </h1>
     <v-layout row wrap justify-center align-center>
       <v-flex sm6 md6>
         <div class="display-3 font-weight-black">
@@ -28,12 +26,8 @@
 
 <script>
 export default {
-  transition: {
-    name: "fade",
-  },
   data() {
     return {
-      show: true,
       message: "私の人生の集大成をエンジニアに注ぎます！！",
     };
   },
@@ -47,17 +41,16 @@ export default {
   width: 100%;
   height: 90vh;
 
-  // h1 {
+  h1 {
+    position: relative;
 
-  // }
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.7s;
+    .back_text {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.4;
+      top: 17px;
+      left: 10px;
+    }
+  }
 }
 </style>

@@ -3,7 +3,9 @@
     <Header />
     <v-content>
       <v-container>
-        <Nuxt />
+        <transition name="page" appear>
+          <Nuxt />
+        </transition>
       </v-container>
     </v-content>
     <Footer />
@@ -17,4 +19,10 @@ export default {
 </script>
  
 <style lang="scss" scoped>
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  transition: opacity 2s;
+}
 </style>

@@ -23,35 +23,42 @@
       </v-app-bar>
       <!-- ここから -->
       <v-navigation-drawer v-model="drawer" clipped color="primary" app>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-avatar size="130">
-              <v-img :src="image_src" />
-            </v-list-item-avatar>
-            <v-list-item-title class="font-weight-black display-1"
-              >Atushi Sato</v-list-item-title
-            >
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-divider></v-divider>
-
-        <v-list dense>
-          <v-list-item v-for="item in items" :key="item.title" :to="item.link">
-            <v-list-item-icon>
-              <v-icon class="py-3 my-7 font-weight-black display-1">{{
-                item.icon
-              }}</v-icon>
-            </v-list-item-icon>
-
+        <transition name="slide-in" type="animation">
+          <v-list-item v-if="drawer">
             <v-list-item-content>
-              <v-list-item-title
-                class="py-3 my-5 font-weight-black display-1"
-                >{{ item.title }}</v-list-item-title
+              <v-list-item-avatar size="130">
+                <v-img :src="image_src" />
+              </v-list-item-avatar>
+              <v-list-item-title class="font-weight-black display-1"
+                >Atushi Sato</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
-        </v-list>
+        </transition>
+
+        <v-divider></v-divider>
+
+        <transition name="slide-in">
+          <v-list dense v-if="drawer">
+            <v-list-item
+              v-for="item in items"
+              :key="item.title"
+              :to="item.link"
+            >
+              <v-list-item-icon>
+                <v-icon class="py-3 my-7 font-weight-black display-1">{{
+                  item.icon
+                }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title
+                  class="py-3 my-5 font-weight-black display-1"
+                  >{{ item.title }}</v-list-item-title
+                >
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </transition>
       </v-navigation-drawer>
     </header>
   </div>
@@ -59,6 +66,9 @@
 
 <script>
 export default {
+  transition: {
+    name: "slide-in",
+  },
   data() {
     return {
       drawer: false,
@@ -75,4 +85,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.slide-in-enter,
+.slide-leave-to {
+  opacity: 0;
+}
+
+.slide-in-enter-active {
+  animation: slide-in 0.5s;
+  transition: opacity 3s;
+}
+.slide-in-leave-active {
+  animation: slide-in 0.5s reverse;
+  transition: opacity 3s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translate(0);
+  }
+}
 </style>

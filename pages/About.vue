@@ -1,9 +1,10 @@
 <template>
   <div class="about">
+    <nuxt-link v-scroll-to="'#anchor'" to>出発</nuxt-link>
     <h1>My History & Introduction</h1>
-    <Profile />
     <Img />
     <Introduction />
+    <div id="anchor">到着</div>
   </div>
 </template>
 
@@ -11,5 +12,5 @@
 export default {};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

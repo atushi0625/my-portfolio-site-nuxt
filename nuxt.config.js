@@ -15,6 +15,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap' },
     ]
   },
 
@@ -23,7 +24,7 @@ export default {
 ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
+  plugins: [ '~plugins/vue-scrollto',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -38,10 +39,22 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/style-resources' , 'bootstrap-vue/nuxt', 
+  modules: ['@nuxtjs/style-resources' , 'bootstrap-vue/nuxt',['vue-scrollto/nuxt', { duration: 700 }],
 ],
 
+pageTransition: 'page',
+  // または
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+    beforeEnter (el) {
+      console.log('Before enter...');
+    }
+  },
 
+  transition: 'transition',
+
+  
 
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
