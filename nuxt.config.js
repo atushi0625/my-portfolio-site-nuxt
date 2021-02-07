@@ -15,7 +15,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap' },
     ]
   },
 
@@ -39,8 +38,14 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/style-resources' , 'bootstrap-vue/nuxt',['vue-scrollto/nuxt', { duration: 700 }],
+  modules: ['@nuxtjs/style-resources' , 'bootstrap-vue/nuxt',['vue-scrollto/nuxt', { duration: 700 }],'nuxt-webfontloader',
 ],
+
+webfontloader: {
+  google: {
+    familes: []
+  }
+},
 
 pageTransition: 'page',
   // または

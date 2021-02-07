@@ -4,10 +4,15 @@
       <v-row justify="center" align-content="center">
         <v-col xs="7" sm="10" md="11" lg="12" offset-xl="1">
           <v-cord>
-            <v-card-actions class="d-flex justify-center mb-6">
-              <v-avatar size="230">
-                <v-img :src="image_src" />
-              </v-avatar>
+            <v-card-actions
+              class="d-flex justify-center mb-6"
+              @mouseover="show = !show"
+            >
+              <transition name="slideInLeft">
+                <v-avatar size="230" v-if="show">
+                  <v-img :src="image_src" />
+                </v-avatar>
+              </transition>
             </v-card-actions>
 
             <v-cod-title>
@@ -43,9 +48,25 @@ export default {
       hobbys:
         "2018年頃から格闘技がやりたくてキックボクシングジムに入会。アマチュアで試合3度出場し、3戦3勝",
       image_src: require("../assets/about.jpg"),
+      show: true,
     };
   },
+  methods: {},
 };
 </script>
 <style  lang="scss" scoped>
+.slideInLeft-enter-to,
+.slideInLeft-leave {
+  transform: translateX(50);
+}
+.slideInLeft-leave-to,
+.slideInLeft-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.slideInLeft-enter-active,
+.slideInLeft-leave-active {
+  transition: opacity 0.5s;
+  transform: 1.5s;
+}
 </style>

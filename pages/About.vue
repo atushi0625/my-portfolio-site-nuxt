@@ -1,10 +1,19 @@
 <template>
   <div class="about">
-    <nuxt-link v-scroll-to="'#anchor'" to>出発</nuxt-link>
+    <v-btn depressed color="primary">
+      <nuxt-link
+        v-scroll-to="'#anchor'"
+        to
+        class="display-1 font-weight-black text-white"
+        >START</nuxt-link
+      >
+    </v-btn>
     <h1>My History & Introduction</h1>
     <Img />
     <Introduction />
-    <div id="anchor">到着</div>
+    <v-btn depressed color="error">
+      <div id="anchor" class="display-1 font-weight-black">END</div>
+    </v-btn>
   </div>
 </template>
 
